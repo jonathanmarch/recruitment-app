@@ -1,0 +1,21 @@
+
+<div class="candidate-list-container">
+    <h3>List of available Candidates</h3>
+
+    <mat-card *ngFor="let candidate of candidates" class="candidate-row">
+        <div class="header">
+            <div class="header-name">Full Name</div>
+            <div class="header-controls"><a href="#" (click)="onDelete(candidate)">Delete</a></div>
+        </div>
+        <div class="content">
+            <div class="content-name">{{ candidate.firstName }} {{ candidate.lastName }}</div>
+            <div class="content-offer">
+                <mat-checkbox [checked]="candidate.shouldSendOffer" (change)="onChangeOffer($event, candidate)">Offer Position</mat-checkbox>
+            </div>
+        </div>
+    </mat-card>
+
+    <app-candidate-create *ngIf="showCreateCandidateForm" (hideCreateCandidateForm)="onHideCreateCandidate()" (createdNewCandidate)="onCreatedNewCandidate($event)"></app-candidate-create>
+
+    <button mat-raised-button color="primary" style="margin-top: 1rem; float: right;" (click)="onShowCreateCandidate()" *ngIf="!showCreateCandidateForm">Create new</button>
+</div>

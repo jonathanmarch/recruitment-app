@@ -1,0 +1,38 @@
+<div class="candidate-create">
+  <mat-card>
+    <h4 class="header">Create New Candidate</h4>
+    <form (submit)="onSubmit()" name="createForm">
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="First Name"
+          name="firstName"
+          required
+          [(ngModel)]="candidate.firstName"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Last Name"
+          name="lastName"
+          required
+          [(ngModel)]="candidate.lastName"
+        />
+      </mat-form-field>
+
+      <div class="checkbox">
+        <mat-checkbox
+          matInput
+          name="shouldSendOffer"
+          [(ngModel)]="candidate.shouldSendOffer"
+          >Offer Position</mat-checkbox
+        >
+      </div>
+
+      <button mat-raised-button color="secondary" class="cancel" (click)="onCancel($event)">Cancel</button>
+      <button mat-raised-button color="primary" [disabled]="!candidate.firstName || !candidate.lastName">Create</button>
+    </form>
+  </mat-card>
+</div>
